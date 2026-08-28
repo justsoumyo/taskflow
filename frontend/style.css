@@ -1,0 +1,407 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f5f7;
+    color: #172b4d;
+}
+
+/* ================= AUTH ================= */
+
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0079bf, #00aeef);
+}
+
+.auth-card {
+    width: 400px;
+    max-width: 90%;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.auth-card h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.auth-tabs {
+    display: flex;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #ddd;
+}
+
+.auth-tabs button {
+    width: 50%;
+    padding: 12px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.auth-tabs button.active {
+    border-bottom: 3px solid #0079bf;
+    color: #0079bf;
+    font-weight: bold;
+}
+
+label {
+    display: block;
+    margin: 12px 0 6px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+button {
+    border: none;
+    border-radius: 6px;
+    padding: 10px 15px;
+    background: #0079bf;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+#authButton {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+}
+
+/* ================= APP ================= */
+
+.hidden {
+    display: none !important;
+}
+
+.app-page {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    width: 260px;
+    background: #172b4d;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.user-section {
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.user-section span {
+    display: block;
+    color: #b6c2cf;
+    margin-bottom: 5px;
+}
+
+.new-board-btn {
+    width: 100%;
+    margin-bottom: 25px;
+    background: #0079bf;
+}
+
+.sidebar h3 {
+    margin-bottom: 10px;
+}
+
+.boards-list {
+    flex: 1;
+}
+
+.board-item {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    padding: 12px;
+    margin-bottom: 5px;
+}
+
+.board-item:hover,
+.board-item.active {
+    background: rgba(255,255,255,0.15);
+}
+
+.logout-btn {
+    background: #c0392b;
+    margin-top: 20px;
+}
+
+/* MAIN */
+
+.main-content {
+    flex: 1;
+    padding: 30px;
+    overflow-x: auto;
+}
+
+.empty-state {
+    text-align: center;
+    margin-top: 150px;
+}
+
+.empty-state h1 {
+    margin-bottom: 15px;
+}
+
+.empty-state p {
+    margin-bottom: 25px;
+    color: #666;
+}
+
+.board-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.board-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.danger {
+    background: #c0392b;
+}
+
+/* LISTS */
+
+.lists-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.task-list {
+    width: 280px;
+    min-width: 280px;
+    background: #ebecf0;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.list-header h3 {
+    font-size: 16px;
+}
+
+.list-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.list-actions button {
+    padding: 5px 8px;
+    font-size: 12px;
+}
+
+.tasks {
+    min-height: 20px;
+    padding-bottom: 5px;
+}
+
+.task-card {
+    background: white;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 10px;
+    cursor: grab;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+.task-card:active {
+    cursor: grabbing;
+}
+
+.task-card:hover {
+    background: #f9f9f9;
+}
+
+.task-card h4 {
+    margin-bottom: 6px;
+    font-size: 15px;
+}
+
+.task-card p {
+    color: #666;
+    font-size: 13px;
+}
+
+.add-task-btn {
+    width: 100%;
+    background: #5aac44;
+    margin-top: 5px;
+}
+
+/* DRAG OVER */
+
+.tasks.drag-over {
+    background: #d8eaff;
+    border-radius: 6px;
+}
+
+/* MODAL */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.modal-content {
+    width: 450px;
+    max-width: 90%;
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+}
+
+.modal-content input,
+.modal-content textarea {
+    margin-bottom: 15px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.cancel-btn {
+    background: #777;
+}
+
+/* MESSAGE */
+
+#authMessage {
+    text-align: center;
+    margin-top: 15px;
+    color: #c0392b;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .app-page {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .boards-list {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+    }
+
+    .board-item {
+        min-width: 150px;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .board-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}
+/* LOGIN / SIGN UP TABS */
+
+.auth-tabs {
+    display: flex;
+    width: 100%;
+    margin: 20px 0;
+    border: 2px solid #667eea;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.auth-tabs button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: white;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.auth-tabs button.active {
+    background: #667eea;
+    color: white;
+}
+
+.auth-tabs button:hover {
+    background: #e8ebff;
+}
+
+.auth-tabs button.active:hover {
+    background: #5568d8;
+}

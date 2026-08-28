@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TaskFlow - Task Board</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= AUTH PAGE ================= -->
+
+    <div id="authPage" class="auth-page">
+
+        <div class="auth-card">
+
+            <h1>🚀 TaskFlow</h1>
+
+            <p class="subtitle">
+                Organize your work. Get things done.
+            </p>
+
+
+            <!-- LOGIN / SIGN UP TABS -->
+
+            <div class="auth-tabs">
+
+                <button
+                    type="button"
+                    id="loginTab"
+                    class="active"
+                >
+                    Login
+                </button>
+
+                <button
+                    type="button"
+                    id="registerTab"
+                >
+                    Sign Up
+                </button>
+
+            </div>
+
+
+            <!-- AUTH FORM -->
+
+            <form id="authForm">
+
+
+                <!-- FULL NAME - SIGN UP ONLY -->
+
+                <div
+                    id="fullNameField"
+                    class="signup-field hidden"
+                >
+
+                    <label>Full Name</label>
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        placeholder="Enter your full name"
+                    >
+
+                </div>
+
+
+                <!-- EMAIL - SIGN UP ONLY -->
+
+                <div
+                    id="emailField"
+                    class="signup-field hidden"
+                >
+
+                    <label>Email Address</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                    >
+
+                </div>
+
+
+                <!-- USERNAME -->
+
+                <label>Username</label>
+
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Enter username"
+                    required
+                >
+
+
+                <!-- PASSWORD -->
+
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter password"
+                    required
+                >
+
+
+                <!-- CONFIRM PASSWORD - SIGN UP ONLY -->
+
+                <div
+                    id="confirmPasswordField"
+                    class="signup-field hidden"
+                >
+
+                    <label>Confirm Password</label>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Confirm your password"
+                    >
+
+                </div>
+
+
+                <!-- SUBMIT BUTTON -->
+
+                <button
+                    type="submit"
+                    id="authButton"
+                >
+                    Login
+                </button>
+
+            </form>
+
+
+            <!-- MESSAGE -->
+
+            <p id="authMessage"></p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= MAIN APP ================= -->
+
+    <div
+        id="appPage"
+        class="app-page hidden"
+    >
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+                🚀 TaskFlow
+            </div>
+
+
+            <div class="user-section">
+
+                <span>
+                    Logged in as:
+                </span>
+
+                <strong id="currentUser"></strong>
+
+            </div>
+
+
+            <button
+                id="newBoardBtn"
+                class="new-board-btn"
+            >
+                + Create Board
+            </button>
+
+
+            <h3>Your Boards</h3>
+
+
+            <div
+                id="boardsList"
+                class="boards-list"
+            ></div>
+
+
+            <button
+                id="logoutBtn"
+                class="logout-btn"
+            >
+                Logout
+            </button>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main-content">
+
+
+            <!-- EMPTY STATE -->
+
+            <div
+                id="emptyState"
+                class="empty-state"
+            >
+
+                <h1>
+                    Welcome to TaskFlow 👋
+                </h1>
+
+                <p>
+                    Create a board to start organizing your tasks.
+                </p>
+
+                <button id="emptyCreateBoard">
+                    + Create Your First Board
+                </button>
+
+            </div>
+
+
+            <!-- BOARD VIEW -->
+
+            <div
+                id="boardView"
+                class="board-view hidden"
+            >
+
+                <div class="board-header">
+
+                    <h1 id="boardTitle"></h1>
+
+
+                    <div class="board-actions">
+
+                        <button id="addListBtn">
+                            + Add List
+                        </button>
+
+                        <button
+                            id="deleteBoardBtn"
+                            class="danger"
+                        >
+                            Delete Board
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- LISTS -->
+
+                <div
+                    id="listsContainer"
+                    class="lists-container"
+                ></div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- ================= BOARD MODAL ================= -->
+
+    <div
+        id="boardModal"
+        class="modal hidden"
+    >
+
+        <div class="modal-content">
+
+            <h2>Create New Board</h2>
+
+
+            <input
+                type="text"
+                id="boardNameInput"
+                placeholder="Board name"
+            >
+
+
+            <div class="modal-buttons">
+
+                <button id="createBoardConfirm">
+                    Create
+                </button>
+
+                <button
+                    class="cancel-btn"
+                    data-close="boardModal"
+                >
+                    Cancel
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= LIST MODAL ================= -->
+
+    <div
+        id="listModal"
+        class="modal hidden"
+    >
+
+        <div class="modal-content">
+
+            <h2>Add New List</h2>
+
+
+            <input
+                type="text"
+                id="listNameInput"
+                placeholder="List name"
+            >
+
+
+            <div class="modal-buttons">
+
+                <button id="createListConfirm">
+                    Add List
+                </button>
+
+                <button
+                    class="cancel-btn"
+                    data-close="listModal"
+                >
+                    Cancel
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TASK MODAL ================= -->
+
+    <div
+        id="taskModal"
+        class="modal hidden"
+    >
+
+        <div class="modal-content">
+
+            <h2 id="taskModalTitle">
+                Create Task
+            </h2>
+
+
+            <input
+                type="text"
+                id="taskTitleInput"
+                placeholder="Task title"
+            >
+
+
+            <textarea
+                id="taskDescriptionInput"
+                placeholder="Task description (optional)"
+            ></textarea>
+
+
+            <div class="modal-buttons">
+
+                <button id="saveTaskBtn">
+                    Save Task
+                </button>
+
+
+                <button
+                    id="deleteTaskBtn"
+                    class="danger hidden"
+                >
+                    Delete Task
+                </button>
+
+
+                <button
+                    class="cancel-btn"
+                    data-close="taskModal"
+                >
+                    Cancel
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
